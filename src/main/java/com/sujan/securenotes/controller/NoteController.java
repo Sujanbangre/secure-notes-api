@@ -5,6 +5,7 @@ import com.sujan.securenotes.service.NoteService;
 import org.springframework.web.bind.annotation.*;
 import com.sujan.securenotes.entity.Note;
 import java.util.List;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/user")
@@ -21,8 +22,7 @@ public class NoteController {
             @RequestHeader("Authorization")
             String authHeader,
 
-            @RequestBody
-            NoteRequest request) {
+            @Valid @RequestBody NoteRequest request) {
 
         String token =
                 authHeader.substring(7);

@@ -4,6 +4,7 @@ import com.sujan.securenotes.dto.SignupRequest;
 import com.sujan.securenotes.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import com.sujan.securenotes.dto.LoginRequest;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/auth")
@@ -16,11 +17,11 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public String signup(@RequestBody SignupRequest request) {
+    public String signup(@Valid @RequestBody SignupRequest request) {
         return userService.signup(request);
     }
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest request) {
+    public String login(@Valid @RequestBody LoginRequest request) {
         return userService.login(request);
     }
 
